@@ -16,6 +16,11 @@ App.Store = DS.Store.extend({
   adapter: 'DS.FixtureAdapter'
 });
 
+App.TablesController = Ember.ArrayController.extend({
+
+});
+
+// Models
 App.Table = DS.Model.extend();
 
 App.Table.FIXTURES = [
