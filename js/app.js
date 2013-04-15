@@ -5,7 +5,7 @@ App.Router.map(function() {
   this.resource('tables', function() {
     this.resource('table', { path: ':table_id' });
   });
-  this.resource('table', { path: 'table/:table_id' });
+  // this.resource('table', { path: 'table/:table_id' });  // /table/2
 });
 
 App.TablesRoute = Ember.Route.extend({
@@ -25,9 +25,8 @@ App.Store = DS.Store.extend({
   adapter: 'DS.FixtureAdapter'
 });
 
-App.TablesController = Ember.ArrayController.extend({
-
-});
+App.TablesController = Ember.ArrayController.extend({});
+App.TableController = Ember.ObjectController.extend({});
 
 // Models
 App.Table = DS.Model.extend();
