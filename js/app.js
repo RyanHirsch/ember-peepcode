@@ -5,11 +5,18 @@ App.Router.map(function() {
   this.resource('tables', function() {
     this.resource('table', { path: ':table_id' });
   });
+  this.resource('table', { path: 'table/:table_id' });
 });
 
 App.TablesRoute = Ember.Route.extend({
   model: function() {
     return App.Table.find();
+  }
+});
+
+App.TableRoute = Ember.Route.extend({
+  model: function(params) {
+    return App.Table.find(params.table_id);
   }
 });
 
