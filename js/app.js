@@ -36,7 +36,17 @@ App.Store = DS.Store.extend({
 App.TablesController  = Ember.ArrayController.extend();
 //App.TableController   = Ember.ObjectController.extend();
 
-App.FoodController    = Ember.ArrayController.extend();
+App.FoodController    = Ember.ArrayController.extend({
+  addItem: function(foodItem) {
+    var table = this.controllerFor('table').get('model'),
+      tabItems = table.get('tab.tabItems');
+
+    tabItems.createRecord({
+      food: foodItem,
+      cents: foodItem.get('cents')
+    });
+  }
+});
 App.TabController     = Ember.ObjectController.extend();
 
 
