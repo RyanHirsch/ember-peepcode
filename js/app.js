@@ -40,6 +40,11 @@ App.FoodController    = Ember.ArrayController.extend();
 App.TabController     = Ember.ObjectController.extend();
 
 
+Ember.Handlebars.registerBoundHelper('money', function (cents) {
+  return (cents % 100 === 0 ? cents/100 + '.00' :
+    parseInt(cents/100, 10) + '.' + cents % 100);
+});
+
 // Models
 App.Store = DS.Store.extend({
   revision: 11,
