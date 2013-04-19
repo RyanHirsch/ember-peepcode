@@ -14,6 +14,12 @@ App.ApplicationRoute = Ember.Route.extend({
   }
 });
 
+App.IndexRoute = Ember.Route.extend({
+  redirect: function() {
+    this.transitionTo('tables');
+  }
+})
+
 App.TablesRoute = Ember.Route.extend({
   model: function() {
     return App.Table.find();
@@ -24,6 +30,11 @@ App.TablesRoute = Ember.Route.extend({
 // App.TableRoute = Ember.Route.extend({
 //   model: function(params) {
 //     return App.Table.find(params.table_id);
+//   },
+//   // If we need to do special setup
+//   setupController: function(controller, model) {
+//     this._super(controller, model);
+//     this.controllerFor(...);
 //   }
 // });
 
@@ -33,8 +44,11 @@ App.Store = DS.Store.extend({
   adapter: 'DS.FixtureAdapter'
 });
 
-App.TablesController  = Ember.ArrayController.extend();
-//App.TableController   = Ember.ObjectController.extend();
+// Controllers mentioned in routes will be auto generated
+// App.TablesController  = Ember.ArrayController.extend({
+//   sortProperties: ['id']
+// });
+// App.TableController   = Ember.ObjectController.extend();
 
 App.FoodController    = Ember.ArrayController.extend({
   addItem: function(foodItem) {
@@ -47,7 +61,9 @@ App.FoodController    = Ember.ArrayController.extend({
     });
   }
 });
-App.TabController     = Ember.ObjectController.extend();
+
+// Controllers mentioned in templates will be auto generated
+// App.TabController     = Ember.ObjectController.extend();
 
 
 Ember.Handlebars.registerBoundHelper('money', function (cents) {
